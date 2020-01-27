@@ -3,7 +3,7 @@ var s = [[4, 9, 2], [3, 5, 7], [8, 1, 5]];
 
 // Complete the formingMagicSquare function below.
 function formingMagicSquare(s) {
-    var magicSquare = [
+    let magicSquare = [
         [[8, 1, 6], [3, 5, 7], [4, 9, 2]],
         [[6, 1, 8], [7, 5, 3], [2, 9, 4]],
         [[4, 9, 2], [3, 5, 7], [8, 1, 6]],
@@ -12,15 +12,32 @@ function formingMagicSquare(s) {
         [[4, 3, 8], [9, 5, 1], [2, 7, 6]],
         [[6, 7, 2], [1, 5, 9], [8, 3, 4]],
         [[2, 7, 6], [9, 5, 1], [4, 3, 8]],
-    ];
+    ];  
+    ///All permutations of 3*3 Magic Square
 
     let arr = [];
     let total = 0;
-    let min = 100;
+    let min = 100;  /// This min value is 100 bcoz it's greater than all sum 45 of each 3*3 magic Square. You can take any value to compare with min only condition is that it should be greater than 45.  
 
     for (let i = 0; i < 8; i++) {
-        arr.push(s);
+        arr.push(s);                                  
     }
+    ///    Here we have created given s=>array matrix into 8*3*3 matrix equivalent to magicSquare 8*3*3.
+                                /// Just push 8 times s=>array into arr=>array  
+                                ///For eg. it will become
+                                /*
+                                [
+                                      [ [ 4, 9, 2 ], [ 3, 5, 7 ], [ 8, 1, 5 ] ],
+                                      [ [ 4, 9, 2 ], [ 3, 5, 7 ], [ 8, 1, 5 ] ],
+                                      [ [ 4, 9, 2 ], [ 3, 5, 7 ], [ 8, 1, 5 ] ],
+                                      [ [ 4, 9, 2 ], [ 3, 5, 7 ], [ 8, 1, 5 ] ],
+                                      [ [ 4, 9, 2 ], [ 3, 5, 7 ], [ 8, 1, 5 ] ],
+                                      [ [ 4, 9, 2 ], [ 3, 5, 7 ], [ 8, 1, 5 ] ],
+                                      [ [ 4, 9, 2 ], [ 3, 5, 7 ], [ 8, 1, 5 ] ],
+                                      [ [ 4, 9, 2 ], [ 3, 5, 7 ], [ 8, 1, 5 ] ]
+                                    ]
+                                */
+    
 
     for (let i = 0; i < 8; i++) {
 
@@ -29,16 +46,19 @@ function formingMagicSquare(s) {
 
             for (let k = 0; k < 3; k++) {
                 total = total + Math.abs(arr[i][j][k] - magicSquare[i][j][k]);
+                ////Here I have compared each s=>array element and magicSquare=>array element, stored there difference in total variable.
             }
 
         }
         if (total < min) {
             min = total;
         }
-
+        ///Here each s=>array and magicSquare=> total is compared to min value 
+        
     }
 
     return min;
+    ///Return minimum value amongst all comparisons that we had made between s=>array and magicSquaer=>array 
 
 
 }
